@@ -159,6 +159,22 @@ foreach ($events as $event) {
           registerLogdata($event->getUserId(), $st);
           break;
 
+          case '今夜あいたくて':
+          case 'あいみょん':
+            $names = file('./konya_aitakute.txt');
+            $st = '';
+            foreach($names as $name)
+            {
+              $st = $st . $name;
+            }
+            replyMultiMessage($bot, $event->getReplyToken(),
+              new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
+              new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
+            );
+            // ログデータとして送信メッセージを保存
+            registerLogdata($event->getUserId(), $st);
+            break;
+
       case 'のろし':
       case '狼煙':
       case '竹原':
