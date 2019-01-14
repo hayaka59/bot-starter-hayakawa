@@ -107,14 +107,11 @@ foreach ($events as $event) {
     switch ($inputMessage) {
       case 'ヘルプ':
         $sMes1 = '（１）県名を送るとその県名のお天気情報を返します。' . "\r\n";
-        //$sMes2 = '（２）固定文字「名言」「化物語」「まどマギ」「魔法」「キス」';
         $sMes2 = '（２）固定文字「名言」と送ると名言を返します。' . "\r\n";
         $sMes3 = '（３）固定文字「個数」と送ると登録している名言の個数を返します。' . "\r\n";
         $sMes4 = '（４）固定文字「化物語」「まどマギ」「魔法」「キス」';
-        //$sMes3 = '「してよ」「させない」を送るとメッセージを返します。' . "\r\n";
-        $sMes5 = 'を送るとメッセージを返します。' . "\r\n";
+        $sMes5 = '　　　を送るとメッセージを返します。' . "\r\n";
         $sMes6 = '（５）「花火」でミスチルの HANABI の歌詞を返します。' . "\r\n";
-        //$sMes5 = '（４）「画像」「ウルトラ」で画像をランダムに返します。' . "\r\n";
         $sMes7 = '（６）「リバーシ」でリバーシがプレイできます。' . "\r\n";
         $sMes8 = '（７）/キーワード でキーワードで検索した結果を返します。';
         $shelpmessage = $sMes1 . $sMes2 . $sMes3 . $sMes4 . $sMes5 . $sMes6 . $sMes7 . $sMes8;
@@ -124,84 +121,6 @@ foreach ($events as $event) {
         );
         // ログデータとして送信メッセージを保存
         registerLogdata($event->getUserId(), $shelpmessage);
-        break;
-
-      case 'キーワード':
-        $names = file('./keyword.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
-        break;
-
-      case 'クリスマス':
-      case 'クリスマスソング':
-      case 'バックナンバー':
-      case 'バック':
-        $names = file('./christmas_song.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
-        break;
-
-      case '今夜あいたくて':
-      case 'あいみょん':
-        $names = file('./konya_aitakute.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
-        break;
-
-      case 'あいみょんキーワード':
-        $filename = './aimyon_keyword.txt';
-        replyTextMultiMessage($bot, $event, $filename);
-        break;
-
-      case 'マリーゴールド':
-        $filename = './Marigold.txt';
-        replyTextMultiMessage($bot, $event, $filename);
-
-        break;
-
-      case 'のろし':
-      case '狼煙':
-      case '竹原':
-      case '竹原ピストル':
-        $names = file('./Recitation.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
         break;
 
       case 'カラオケ':
@@ -248,69 +167,29 @@ foreach ($events as $event) {
       case 'さよなら':
       case 'さよならエレジー':
         $names = file('./sayonara.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
+        replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case 'ひといき':
       case 'さやか':
         $names = file('./hitoiki.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
+        replyTextMultiMessage($bot, $event, $filename);
         break;
 
-        case 'Lemon':
-        case 'lemon':
-        case 'LEMON':
-        case 'レモン':
-        case '米津玄師':
-        case 'よねつ':
-          $names = file('./lemon.txt');
-          $st = '';
-          foreach($names as $name)
-          {
-            $st = $st . $name;
-          }
-          replyMultiMessage($bot, $event->getReplyToken(),
-            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-            new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-          );
-          // ログデータとして送信メッセージを保存
-          registerLogdata($event->getUserId(), $st);
-          break;
+      case 'Lemon':
+      case 'lemon':
+      case 'LEMON':
+      case 'レモン':
+      case '米津玄師':
+      case 'よねつ':
+        $names = file('./lemon.txt');
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
       case '打上':
       case '打上花火':
         $names = file('./uchiage.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
+        replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case 'HANABI':
@@ -318,17 +197,7 @@ foreach ($events as $event) {
       case '花火':
       case 'はなび':
         $names = file('./hanabi.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
+        replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case 'ever':
@@ -337,17 +206,7 @@ foreach ($events as $event) {
       case 'エバー':
       case 'さやか':
         $names = file('./ever_since.txt');
-        $st = '';
-        foreach($names as $name)
-        {
-          $st = $st . $name;
-        }
-        replyMultiMessage($bot, $event->getReplyToken(),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        );
-        // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $st);
+        replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case 'おかえり':
@@ -355,18 +214,44 @@ foreach ($events as $event) {
       case '絢香':
         $filename = './okaeri.txt';
         replyTextMultiMessage($bot, $event, $filename);
-        //$st = '';
-        //foreach($names as $name)
-        //{
-        //  $st = $st . $name;
-        //}
-        //replyMultiMessage($bot, $event->getReplyToken(),
-        //  new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st),
-        //  new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1, 11)
-        //);
-        //// ログデータとして送信メッセージを保存
-        //registerLogdata($event->getUserId(), $st);
         break;
+
+        case 'キーワード':
+          $names = file('./keyword.txt');
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case 'クリスマス':
+        case 'クリスマスソング':
+        case 'バックナンバー':
+        case 'バック':
+          $names = file('./christmas_song.txt');
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case '今夜あいたくて':
+        case 'あいみょん':
+          $names = file('./konya_aitakute.txt');
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case 'あいみょんキーワード':
+          $filename = './aimyon_keyword.txt';
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case 'マリーゴールド':
+          $filename = './Marigold.txt';
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case 'のろし':
+        case '狼煙':
+        case '竹原':
+        case '竹原ピストル':
+          $names = file('./Recitation.txt');
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
 
       case '魔法少女':
       case 'まどマギ':
