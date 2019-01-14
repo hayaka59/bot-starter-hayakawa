@@ -624,9 +624,8 @@ foreach ($events as $event) {
 }
 
 // テキストの内容をメッセージ送信する
-function replyTextMultiMessage($bot, $filename) {
+function replyTextMultiMessage($bot, $event, $filename) {
   $names = file($filename);
-  //$names = file('./Marigold.txt');
   $st = '';
   foreach($names as $name)
   {
