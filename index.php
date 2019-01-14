@@ -229,19 +229,30 @@ foreach ($events as $event) {
           replyTextMultiMessage($bot, $event, $filename);
           break;
 
-        case '今夜あいたくて':
         case 'あいみょん':
-          $names = file('./konya_aitakute.txt');
+          $filename = './aimyon_keyword.txt';
           replyTextMultiMessage($bot, $event, $filename);
           break;
 
-        case 'あいみょんキーワード':
-          $filename = './aimyon_keyword.txt';
+        case '今夜あいたくて':
+          $names = file('./konya_aitakute.txt');
           replyTextMultiMessage($bot, $event, $filename);
           break;
 
         case 'マリーゴールド':
           $filename = './Marigold.txt';
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case '君はロック'
+        case '君はロックを聴かない':
+          $filename = './kimiwaRock.txt';
+          replyTextMultiMessage($bot, $event, $filename);
+          break;
+
+        case '生きていた'
+        case '生きていたんだよな':
+          $filename = './ikiteitaindayona.txt';
           replyTextMultiMessage($bot, $event, $filename);
           break;
 
