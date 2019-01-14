@@ -354,7 +354,7 @@ foreach ($events as $event) {
       case 'あやか':
       case '絢香':
         $filename = './okaeri.txt';
-        replyTextMultiMessage($bot, $events, $filename);
+        replyTextMultiMessage($bot, $event, $filename);
         //$st = '';
         //foreach($names as $name)
         //{
