@@ -177,13 +177,12 @@ foreach ($events as $event) {
 
       case 'あいみょんキーワード':
         $filename = './aimyon_keyword.txt';
-        replyTextMultiMessage($bot, $filename);
-
+        replyTextMultiMessage($bot, $events, $filename);
         break;
 
       case 'マリーゴールド':
         $filename = './Marigold.txt';
-        replyTextMultiMessage($bot, $filename);
+        replyTextMultiMessage($bot, $events, $filename);
 
         break;
 
@@ -355,7 +354,7 @@ foreach ($events as $event) {
       case 'あやか':
       case '絢香':
         $filename = './okaeri.txt';
-        replyTextMultiMessage($bot, $filename);
+        replyTextMultiMessage($bot, $events, $filename);
         //$st = '';
         //foreach($names as $name)
         //{
@@ -627,6 +626,7 @@ foreach ($events as $event) {
 // テキストの内容をメッセージ送信する
 function replyTextMultiMessage($bot, $filename) {
   $names = file($filename);
+  //$names = file('./Marigold.txt');
   $st = '';
   foreach($names as $name)
   {
