@@ -177,12 +177,12 @@ foreach ($events as $event) {
 
       case 'あいみょんキーワード':
         $filename = './aimyon_keyword.txt';
-        replyTextMultiMessage($bot, $events, $filename);
+        replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case 'マリーゴールド':
         $filename = './Marigold.txt';
-        replyTextMultiMessage($bot, $events, $filename);
+        replyTextMultiMessage($bot, $event, $filename);
 
         break;
 
