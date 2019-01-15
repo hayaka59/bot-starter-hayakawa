@@ -244,13 +244,13 @@ foreach ($events as $event) {
           replyTextMultiMessage($bot, $event, $filename);
           break;
 
-        case '君はロック'
+        case '君はロック':
         case '君はロックを聴かない':
           $filename = './kimiwaRock.txt';
           replyTextMultiMessage($bot, $event, $filename);
           break;
 
-        case '生きていた'
+        case '生きていた':
         case '生きていたんだよな':
           $filename = './ikiteitaindayona.txt';
           replyTextMultiMessage($bot, $event, $filename);
