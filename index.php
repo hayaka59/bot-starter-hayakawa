@@ -102,7 +102,7 @@ foreach ($events as $event) {
 
     $inputMessage = $event->getText();
     // ログデータとして受信文字を保存
-    //registerLogdata($event->getUserId(), '【受信文字】' . $inputMessage);
+    registerLogdata($event->getUserId(), '【受信文字】' . $inputMessage);
 
     switch ($inputMessage) {
       case 'ヘルプ':
