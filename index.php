@@ -166,13 +166,13 @@ foreach ($events as $event) {
       case 'エレジー':
       case 'さよなら':
       case 'さよならエレジー':
-        $names = file('./sayonara.txt');
+        $filename = file('./sayonara.txt');
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case 'ひといき':
       case 'さやか':
-        $names = file('./hitoiki.txt');
+        $filename = file('./hitoiki.txt');
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
@@ -182,13 +182,13 @@ foreach ($events as $event) {
       case 'レモン':
       case '米津玄師':
       case 'よねつ':
-        $names = file('./lemon.txt');
+        $filename = file('./lemon.txt');
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
       case '打上':
       case '打上花火':
-        $names = file('./uchiage.txt');
+        $filename = file('./uchiage.txt');
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
@@ -196,7 +196,7 @@ foreach ($events as $event) {
       case 'hanabi':
       case '花火':
       case 'はなび':
-        $names = file('./hanabi.txt');
+        $filename = file('./hanabi.txt');
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
@@ -205,7 +205,7 @@ foreach ($events as $event) {
       case 'SAYAKA':
       case 'エバー':
       case 'さやか':
-        $names = file('./ever_since.txt');
+        $filename = file('./ever_since.txt');
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
@@ -216,53 +216,53 @@ foreach ($events as $event) {
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
-        case 'キーワード':
-          $names = file('./keyword.txt');
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case 'キーワード':
+        $filename = file('./keyword.txt');
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case 'クリスマス':
-        case 'クリスマスソング':
-        case 'バックナンバー':
-        case 'バック':
-          $names = file('./christmas_song.txt');
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case 'クリスマス':
+      case 'クリスマスソング':
+      case 'バックナンバー':
+      case 'バック':
+        $filename = file('./christmas_song.txt');
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case 'あいみょん':
-          $filename = './aimyon_keyword.txt';
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case 'あいみょん':
+        $filename = './aimyon_keyword.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case '今夜あいたくて':
-          $names = file('./konya_aitakute.txt');
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case '今夜あいたくて':
+        $filename = file('./konya_aitakute.txt');
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case 'マリーゴールド':
-          $filename = './Marigold.txt';
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case 'マリーゴールド':
+        $filename = './Marigold.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case '君はロック':
-        case '君はロックを聴かない':
-          $filename = './kimiwaRock.txt';
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case '君はロック':
+      case '君はロックを聴かない':
+        $filename = './kimiwaRock.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case '生きていた':
-        case '生きていたんだよな':
-          $filename = './ikiteitaindayona.txt';
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case '生きていた':
+      case '生きていたんだよな':
+        $filename = './ikiteitaindayona.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
-        case 'のろし':
-        case '狼煙':
-        case '竹原':
-        case '竹原ピストル':
-          $names = file('./Recitation.txt');
-          replyTextMultiMessage($bot, $event, $filename);
-          break;
+      case 'のろし':
+      case '狼煙':
+      case '竹原':
+      case '竹原ピストル':
+        $filename = file('./Recitation.txt');
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
 
       case '魔法少女':
       case 'まどマギ':
