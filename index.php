@@ -203,8 +203,7 @@ foreach ($events as $event) {
       case 'ever':
       case 'EVER':
       case 'SAYAKA':
-      case 'エバー':
-      case 'さやか':
+      case 'エバー':      
         $filename = './ever_since.txt';
         replyTextMultiMessage($bot, $event, $filename);
         break;
