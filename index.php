@@ -203,7 +203,7 @@ foreach ($events as $event) {
       case 'ever':
       case 'EVER':
       case 'SAYAKA':
-      case 'エバー':      
+      case 'エバー':
         $filename = './ever_since.txt';
         replyTextMultiMessage($bot, $event, $filename);
         break;
@@ -222,9 +222,23 @@ foreach ($events as $event) {
 
       case 'クリスマス':
       case 'クリスマスソング':
-      case 'バックナンバー':
-      case 'バック':
         $filename = './christmas_song.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
+
+      case 'ハッピーエンド':
+        $filename = './happy_end.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
+
+      case 'パッピーバースデー':
+      case 'HAPPY BIRTHDAY':
+        $filename = './happy_birthday.txt';
+        replyTextMultiMessage($bot, $event, $filename);
+        break;
+
+      case 'バックナンバー':
+        $filename = './backnumber_keyword.txt';
         replyTextMultiMessage($bot, $event, $filename);
         break;
 
