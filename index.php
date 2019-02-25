@@ -233,6 +233,7 @@ foreach ($events as $event) {
 
       case 'パッピーバースデー':
       case 'HAPPY BIRTHDAY':
+      case 'happy birthday':
         $filename = './happy_birthday.txt';
         replyTextMultiMessage($bot, $event, $filename);
         break;
