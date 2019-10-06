@@ -617,7 +617,8 @@ function getLogdataByUserId() {
   $sth->execute(array($userId));
   // レコードが存在しなければNULL
   if (!($row = $sth->fetch())) {
-    return PDO::PARAM_NULL;
+    //return PDO::PARAM_NULL;
+    return '空データ';
   } else {
     // 石の配置を連想配列に変換し返す
     return json_decode($row['userid']);
