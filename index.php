@@ -437,6 +437,16 @@ foreach ($events as $event) {
         registerLogdata($event->getUserId(), $sMessage);
         break;
 
+        case 'ログデータ':
+          $stkid = rand(156,159);
+          $sMessage = getLogdataByUserId();
+          replyMultiMessage($bot, $event->getReplyToken(),
+            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
+            new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
+          );
+          // ログデータとして送信メッセージを保存
+          registerLogdata($event->getUserId(), $sMessage);
+          break;
       default:
         # code...
         break;
@@ -596,6 +606,21 @@ function getStonesByUserId($userId) {
   } else {
     // 石の配置を連想配列に変換し返す
     return json_decode($row['stone']);
+  }
+}
+
+//　ログデータからユーザIDを取得する
+function getLogdataByUserId() {
+  $dbh = dbConnection::getConnection();
+  $sql = 'select userid from logdata';
+  $sth = $dbh->prepare($sql);
+  $sth->execute(array($userId));
+  // レコードが存在しなければNULL
+  if (!($row = $sth->fetch())) {
+    return PDO::PARAM_NULL;
+  } else {
+    // 石の配置を連想配列に変換し返す
+    return json_decode($row['userid']);
   }
 }
 
