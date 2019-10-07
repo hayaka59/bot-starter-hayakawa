@@ -437,16 +437,17 @@ foreach ($events as $event) {
         registerLogdata($event->getUserId(), $sMessage);
         break;
 
-        case 'ログデータ':
-          $stkid = rand(156,159);
-          $sMessage = getLogdataByUserId();
-          replyMultiMessage($bot, $event->getReplyToken(),
-            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
-            new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
-          );
-          // ログデータとして送信メッセージを保存
-          registerLogdata($event->getUserId(), $sMessage);
-          break;
+      case 'ログデータ':
+        $stkid = rand(156,159);
+        $sMessage = getLogdataByUserId();
+        replyMultiMessage($bot, $event->getReplyToken(),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
+          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
+        );
+        // ログデータとして送信メッセージを保存
+        registerLogdata($event->getUserId(), $sMessage);
+        break;
+
       default:
         # code...
         break;
@@ -622,7 +623,8 @@ function getLogdataByUserId() {
     return '空データ';
   } else {
     // 石の配置を連想配列に変換し返す
-    return json_decode($row['userid']);
+    //return json_decode($row['userid']);
+    return $row;
   }
 }
 
