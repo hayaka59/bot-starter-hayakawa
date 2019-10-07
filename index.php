@@ -614,7 +614,8 @@ function getLogdataByUserId() {
   $dbh = dbConnection::getConnection();
   $sql = 'select userid from logdata';
   $sth = $dbh->prepare($sql);
-  $sth->execute(array($userId));
+  //$sth->execute(array($userId));
+  $sth->execute();
   // レコードが存在しなければNULL
   if (!($row = $sth->fetch())) {
     //return PDO::PARAM_NULL;
