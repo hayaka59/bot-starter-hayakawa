@@ -613,6 +613,7 @@ function getStonesByUserId($userId) {
 //　ログデータからユーザIDを取得する
 function getLogdataByUserId() {
   $res = null;
+  $ret = null;
   $dbh = dbConnection::getConnection();
   $sql = 'select userid from logdata';
   $sth = $dbh->prepare($sql);
@@ -621,10 +622,10 @@ function getLogdataByUserId() {
   // SQL実行
   $res = $dbh->query($sql);
   // 取得したデータを出力
-  foreach( $res as $value ) {
-    $res = $res . $value[logmessage];
+  foreach( $value as $res ) {
+    $ret = $ret . $value[logmessage];
   }
-  return "【抽出処理完了】" . $res;
+  return "【抽出処理完了】" . $ret;
 
   // レコードが存在しなければNULL
   //if (!($row = $sth->fetch())) {
