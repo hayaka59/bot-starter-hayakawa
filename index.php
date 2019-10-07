@@ -623,7 +623,7 @@ function getLogdataByUserId() {
   $res = $dbh->query($sql);
   // 取得したデータを出力
   foreach( $res as $value ) {
-    $ret = $ret . $value[logmessage];
+    $ret = $ret . json_decode($value[logmessage]);
   }
   return "【抽出処理完了】" . $ret;
 
