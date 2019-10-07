@@ -624,7 +624,7 @@ function getLogdataByUserId() {
   } else {
     // 石の配置を連想配列に変換し返す
     //return json_decode($row['userid']);
-    return $row;
+    return "抽出処理完了：" . $row['userid'];
   }
 }
 
