@@ -612,20 +612,29 @@ function getStonesByUserId($userId) {
 
 //　ログデータからユーザIDを取得する
 function getLogdataByUserId() {
+  $res = null;
   $dbh = dbConnection::getConnection();
   $sql = 'select userid from logdata';
   $sth = $dbh->prepare($sql);
   //$sth->execute(array($userId));
-  $sth->execute();
+  //$sth->execute();
+  // SQL実行
+  $res = $dbh->query($sql);
+  // 取得したデータを出力
+  foreach( $res as $value ) {
+    $res = $res . $value[logmessage];
+  }
+  return "【抽出処理完了】" . $res;
+
   // レコードが存在しなければNULL
-  if (!($row = $sth->fetch())) {
+  //if (!($row = $sth->fetch())) {
     //return PDO::PARAM_NULL;
-    return '空データ';
-  } else {
+    //return '空データ';
+  //} else {
     // 石の配置を連想配列に変換し返す
     //return json_decode($row['userid']);
-    return "抽出処理完了：" . $row['userid'];
-  }
+    //return "抽出処理完了：" . $row['userid'];
+  //}
 }
 
 // ゲームオーバー
