@@ -615,15 +615,15 @@ function getLogdataByUserId() {
   $res = null;
   $ret = null;
   $dbh = dbConnection::getConnection();
-  $sql = 'select userid from logdata';
+  $sql = 'select * from logdata';
   $sth = $dbh->prepare($sql);
   //$sth->execute(array($userId));
   //$sth->execute();
   // SQL実行
   $res = $dbh->query($sql);
   // 取得したデータを出力
-  foreach( $res as $value ) {
-    $ret = $ret . json_decode($value[logmessage]);
+  foreach( $res as $row ) {
+    $ret = $ret . $row['logmessage'];
   }
   return "【抽出処理完了】" . $ret;
 
