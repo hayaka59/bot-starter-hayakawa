@@ -445,7 +445,7 @@ foreach ($events as $event) {
           new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
         );
         // ログデータとして送信メッセージを保存
-        registerLogdata($event->getUserId(), $sMessage);
+        //registerLogdata($event->getUserId(), $sMessage);
         break;
 
       default:
@@ -617,8 +617,6 @@ function getLogdataByUserId() {
   $dbh = dbConnection::getConnection();
   $sql = 'select * from logdata';
   $sth = $dbh->prepare($sql);
-  //$sth->execute(array($userId));
-  //$sth->execute();
   // SQL実行
   $res = $dbh->query($sql);
   // 取得したデータを出力
