@@ -615,7 +615,7 @@ function getLogdataByUserId() {
   $res = null;
   $ret = null;
   $dbh = dbConnection::getConnection();
-  $sql = 'select * from logdata';
+  $sql = 'select * from logdata　order by date';
   $sth = $dbh->prepare($sql);
   // SQL実行
   $res = $dbh->query($sql);
