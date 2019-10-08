@@ -623,9 +623,9 @@ function getLogdataByUserId() {
   $res = $dbh->query($sql);
   // 取得したデータを出力
   foreach( $res as $row ) {
-    $ret = $ret . $row['logmessage'];
+    $ret = $ret . $row['logmessage'] . "\n";
   }
-  return "【抽出処理完了】" . $ret;
+  return $ret;
 
   // レコードが存在しなければNULL
   //if (!($row = $sth->fetch())) {
