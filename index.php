@@ -649,7 +649,7 @@ function getLogdataByDelete() {
   //foreach( $res as $row ) {
   //  $ret = $ret . $row['date'] . "\n";
   //}
-  return $res;
+  return '削除しました。';
 }
 
 // ログデータから日付を取得する
