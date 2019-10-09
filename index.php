@@ -437,15 +437,41 @@ foreach ($events as $event) {
         registerLogdata($event->getUserId(), $sMessage);
         break;
 
-      case 'ログデータ':
+      case 'ログ削除':
+        $stkid = rand(156,159);
+        $sMessage = getLogdataByDelete();
+        replyMultiMessage($bot, $event->getReplyToken(),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
+          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
+        );
+        break;
+
+      case 'ログ日付':
+        $stkid = rand(156,159);
+        $sMessage = getLogdataByDate();
+        replyMultiMessage($bot, $event->getReplyToken(),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
+          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
+        );
+        break;
+
+      case 'ログユーザー':
+      case 'ログユーザ':
         $stkid = rand(156,159);
         $sMessage = getLogdataByUserId();
         replyMultiMessage($bot, $event->getReplyToken(),
           new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
           new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
         );
-        // ログデータとして送信メッセージを保存
-        //registerLogdata($event->getUserId(), $sMessage);
+        break;
+
+      case 'ログメッセージ':
+        $stkid = rand(156,159);
+        $sMessage = getLogdataByLogMessage();
+        replyMultiMessage($bot, $event->getReplyToken(),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
+          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
+        );
         break;
 
       default:
@@ -610,8 +636,56 @@ function getStonesByUserId($userId) {
   }
 }
 
+// ログデータを削除する
+function getLogdataByDelete() {
+  $res = null;
+  $ret = null;
+  $dbh = dbConnection::getConnection();
+  $sql = 'delete from logdata';
+  $sth = $dbh->prepare($sql);
+  // SQL実行
+  $res = $dbh->query($sql);
+  // 取得したデータを出力
+  //foreach( $res as $row ) {
+  //  $ret = $ret . $row['date'] . "\n";
+  //}
+  return $res;
+}
+
+// ログデータから日付を取得する
+function getLogdataByDate() {
+  $res = null;
+  $ret = null;
+  $dbh = dbConnection::getConnection();
+  $sql = 'select * from logdata order by date';
+  $sth = $dbh->prepare($sql);
+  // SQL実行
+  $res = $dbh->query($sql);
+  // 取得したデータを出力
+  foreach( $res as $row ) {
+    $ret = $ret . $row['date'] . "\n";
+  }
+  return $ret;
+}
+
 //　ログデータからユーザIDを取得する
 function getLogdataByUserId() {
+  $res = null;
+  $ret = null;
+  $dbh = dbConnection::getConnection();
+  $sql = 'select * from logdata order by date';
+  $sth = $dbh->prepare($sql);
+  // SQL実行
+  $res = $dbh->query($sql);
+  // 取得したデータを出力
+  foreach( $res as $row ) {
+    $ret = $ret . $row['userid'] . "\n";
+  }
+  return $ret;
+}
+
+// ログデータからメッセージを取得する
+function getLogdataByLogMessage() {
   $res = null;
   $ret = null;
   $dbh = dbConnection::getConnection();
@@ -624,16 +698,6 @@ function getLogdataByUserId() {
     $ret = $ret . $row['logmessage'] . "\n";
   }
   return $ret;
-
-  // レコードが存在しなければNULL
-  //if (!($row = $sth->fetch())) {
-    //return PDO::PARAM_NULL;
-    //return '空データ';
-  //} else {
-    // 石の配置を連想配列に変換し返す
-    //return json_decode($row['userid']);
-    //return "抽出処理完了：" . $row['userid'];
-  //}
 }
 
 // ゲームオーバー
