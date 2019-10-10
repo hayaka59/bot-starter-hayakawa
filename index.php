@@ -645,11 +645,7 @@ function getLogdataByDelete() {
   $sth = $dbh->prepare($sql);
   // SQL実行
   $res = $dbh->query($sql);
-  // 取得したデータを出力
-  //foreach( $res as $row ) {
-  //  $ret = $ret . $row['date'] . "\n";
-  //}
-  return '削除しました。';
+  return $res->rowCount() . '行、削除しました。';
 }
 
 // ログデータから日付を取得する
