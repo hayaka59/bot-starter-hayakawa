@@ -675,7 +675,8 @@ function getLogdataByUserId() {
   $res = $dbh->query($sql);
   // 取得したデータを出力
   foreach( $res as $row ) {
-    $ret = $ret . $row['userid'] . "\n";
+    //$ret = $ret . $row['userid'] . "\n";
+    $ret = $ret . mysql_result($row['userid'],0);
   }
   return $ret;
 }
