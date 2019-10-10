@@ -669,13 +669,13 @@ function getLogdataByUserId() {
   $res = null;
   $ret = null;
   $dbh = dbConnection::getConnection();
-  $sql = 'select * from logdata order by date';
+  $sql = 'select userid from logdata order by date';
   $sth = $dbh->prepare($sql);
   // SQL実行
   $res = $dbh->query($sql);
   // 取得したデータを出力
   foreach( $res as $row ) {
-    $ret = $ret . var_dump($row['userid']) . "\n";
+    $ret = $ret . $row['userid'] . "\n";
   }
   return $ret;
 }
