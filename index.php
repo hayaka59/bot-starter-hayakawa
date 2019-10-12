@@ -686,7 +686,7 @@ function getLogdataByUserId() {
     //}
     return $ret;
   } catch(PDOException $e){
-    ret $e->getMessage();
+    return $e->getMessage();
   }
 }
 
