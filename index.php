@@ -674,7 +674,7 @@ function getLogdataByUserId() {
     $sth = $dbh->prepare($sql);
     // SQL実行
     //$res = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    $res = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
+    $res = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
     // 取得したデータを出力
     foreach( $res as $row ) {
       $ret = $ret . $row['userid'] . "\n";
