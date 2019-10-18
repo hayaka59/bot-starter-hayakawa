@@ -677,9 +677,15 @@ function getLogdataByUserId() {
     $sth->execute();
 
     foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $value) {
-        $ret = $ret . $value['userid'] . "\n";
+        //$ret = $ret . $value['userid'] . "\n";
+        $ret = $ret . $value[0] . "\n";
         //$ret = $ret . $value->userid . "\n";
     }
+
+    //$query = mysql_query($selectShoeRatingQuery);
+    //$row = mysql_fetch_row($query);
+    //$shoeRating = $row[0];
+
     // 取得したデータを出力
     //foreach( $res as $row ) {
     //  $ret = $ret . $row['userid'] . "\n";
