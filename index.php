@@ -671,7 +671,8 @@ function getLogdataByUserId() {
     $ret = null;
     $dbh = dbConnection::getConnection();
     $sql = 'select * from logdata order by date';
-    $grouped_rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
+    $sth = $dbh->prepare($sql);
+    $grouped_rows = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
     $ret = var_dump($grouped_rows);
 
     //$sth = $dbh->prepare($sql);
