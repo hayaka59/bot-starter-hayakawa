@@ -670,28 +670,15 @@ function getLogdataByUserId() {
     $res = null;
     $ret = null;
     $dbh = dbConnection::getConnection();
-    $sql = 'select userid from logdata order by date';
+    $sql = 'select * from logdata order by date';
     $sth = $dbh->prepare($sql);
     // SQL実行
-    //$pdo = $dbh->query($sql);
-    $sth->execute();
-    //foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $value) {
-    foreach ($sth->fetchAll(PDO::FETCH_COLUMN, 0) as $value) {
-        //$row = $value['userid'];
-        //$ret = $ret . $value['userid'] . "\n";
-        $ret = $ret . $value['userid'] . "\n";
-        //$ret = $ret . $value->userid . "\n";
-    }
-
-    //$query = mysql_query($selectShoeRatingQuery);
-    //$row = mysql_fetch_row($query);
-    //$shoeRating = $row[0];
-
+    $res = $dbh->query($sql);
     // 取得したデータを出力
-    //foreach( $res as $row ) {
-    //  $ret = $ret . $row['userid'] . "\n";
+    foreach( $res as $row ) {
+      $ret = $ret . $row['userid'] . "\n";
       //$ret = $ret . mysql_result($row['userid'],0);
-    //}
+    }
     return $ret;
   } catch(PDOException $e){
     return $e->getMessage();
