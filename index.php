@@ -672,16 +672,13 @@ function getLogdataByUserId() {
     $dbh = dbConnection::getConnection();
     $sql = 'select * from logdata order by date';
     $sth = $dbh->prepare($sql);
-    $grouped_rows = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
-    $ret = var_dump($grouped_rows);
-
-    //$sth = $dbh->prepare($sql);
     // SQL実行
-    //$res = $dbh->query($sql);
+    $res = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    //$res = $dbh->query($sql)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_GROUP);
     // 取得したデータを出力
-    //foreach( $res as $row ) {
-      //$ret = $ret . $row['userid'] . "\n";
-    //}
+    foreach( $res as $row ) {
+      $ret = $ret . $row['userid'] . "\n";
+    }
     return $ret;
   } catch(PDOException $e){
     return $e->getMessage();
