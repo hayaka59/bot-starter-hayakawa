@@ -675,11 +675,11 @@ function getLogdataByUserId() {
     // SQL実行
     //$pdo = $dbh->query($sql);
     $sth->execute();
-
+    //foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $value) {
     foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $value) {
-        $row = $value['userid'];
+        //$row = $value['userid'];
         //$ret = $ret . $value['userid'] . "\n";
-        $ret = $ret . $row[0] . "\n";
+        $ret = $ret . $value['userid'] . "\n";
         //$ret = $ret . $value->userid . "\n";
     }
 
