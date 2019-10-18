@@ -677,8 +677,9 @@ function getLogdataByUserId() {
     $sth->execute();
 
     foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $value) {
+        $row = $value['userid'];
         //$ret = $ret . $value['userid'] . "\n";
-        $ret = $ret . $value[0] . "\n";
+        $ret = $ret . $row[0] . "\n";
         //$ret = $ret . $value->userid . "\n";
     }
 
