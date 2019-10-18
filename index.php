@@ -677,7 +677,7 @@ function getLogdataByUserId() {
     $sth->execute();
 
     foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $value) {
-        $ret = $ret . bin2hex($value['userid']) . "\n";
+        $ret = $ret . $value['userid'] . "\n";
         //$ret = $ret . $value->userid . "\n";
     }
     // 取得したデータを出力
