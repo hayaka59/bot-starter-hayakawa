@@ -7,7 +7,9 @@ function weather($bot, $event, $location) {
   // XMLファイルをパースするクラス
   $client = new Goutte\Client();
   // XMLファイルを取得
-  $crawler = $client->request('GET', 'http://weather.livedoor.com/forecast/rss/primary_area.xml');
+  //http://www.data.jma.go.jp/developer/xml/feed/regular.xml
+  //$crawler = $client->request('GET', 'http://weather.livedoor.com/forecast/rss/primary_area.xml');
+  $crawler = $client->request('GET', 'http://www.data.jma.go.jp/developer/xml/feed/regular.xml');
   //replyTextMessage($bot, $event->getReplyToken(), "【デバッグ３】" . $location);
   // 市名のみを抽出しユーザーが入力した市名と比較
   foreach ($crawler->filter('channel ldWeather|source pref city') as $city) {
