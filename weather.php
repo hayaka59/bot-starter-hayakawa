@@ -1,16 +1,18 @@
 <?php
-
 function weather($bot, $event, $location) {
+  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ(weather)】" . $location);
+}
+
+function weather_debug($bot, $event, $location) {
 
   // 住所ID用変数
   $locationId;
   // XMLファイルをパースするクラス
   $client = new Goutte\Client();
   // XMLファイルを取得
-  //http://www.data.jma.go.jp/developer/xml/feed/regular.xml
   //$crawler = $client->request('GET', 'http://weather.livedoor.com/forecast/rss/primary_area.xml');
   $crawler = $client->request('GET', 'http://www.data.jma.go.jp/developer/xml/feed/regular.xml');
-  //replyTextMessage($bot, $event->getReplyToken(), "【デバッグ３】" . $location);
+  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ３】" . $location);
   // 市名のみを抽出しユーザーが入力した市名と比較
   foreach ($crawler->filter('channel ldWeather|source pref city') as $city) {
     // 一致すれば住所IDを取得し処理を抜ける
