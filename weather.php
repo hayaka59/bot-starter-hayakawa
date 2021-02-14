@@ -3,16 +3,19 @@ function weather($bot, $event, $location) {
 
   replyTextMessage($bot, $event->getReplyToken(), "【デバッグ１】" . $location);
 
-  $crawler = $client->request('GET', 'http://www.data.jma.go.jp/developer/xml/feed/regular.xml');
-
-  //要素の取得
-  $retvalue;
-  $tr = $crawler->filter('default|loc')->each(function($element){
-      $retvalue = $retvalue.$element->text()."\n";
-  });
-
-  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ２】" . $retvalue);
-
+  $url = 'view-source:https://www.jma.go.jp/jp/yoho/333.html';
+  $xml = simpleXML_load_file($url,"SimpleXMLElement",LIBXML_NOCDATA);
+  if($xml ==  FALSE)
+  {
+   //deal with error
+   replyTextMessage($bot, $event->getReplyToken(), "【simpleXML_load_fileエラー】");
+  }
+  else { 
+    //do stuff
+    //pre class
+    $sdata = $xml->pre->textframe;
+    replyTextMessage($bot, $event->getReplyToken(), $sdata);
+  }
 }
 
 function weather_debug($bot, $event, $location) {
