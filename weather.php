@@ -7,7 +7,7 @@ function weather($bot, $event, $location) {
 
   //要素の取得
   $retvalue;
-  $tr = $crawler->filter('author')->each(function($element){
+  $tr = $crawler->filter('.entry')->each(function($element){
       $retvalue = $retvalue.$element->text()."\n";
   });
 
