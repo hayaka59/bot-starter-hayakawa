@@ -1,6 +1,18 @@
 <?php
 function weather($bot, $event, $location) {
+
   replyTextMessage($bot, $event->getReplyToken(), "【デバッグ(weather)】" . $location);
+
+  $crawler = $client->request('GET', 'http://www.data.jma.go.jp/developer/xml/feed/regular.xml');
+
+  //要素の取得
+  $retvalue;
+  $tr = $crawler->filter('author name')->each(function($element){
+      $retvalue = $retvalue.$element->text()."\n";
+  });
+
+  replyTextMessage($bot, $event->getReplyToken(), $retvalue);
+
 }
 
 function weather_debug($bot, $event, $location) {
