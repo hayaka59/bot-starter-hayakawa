@@ -1,7 +1,7 @@
 <?php
 function weather($bot, $event, $location) {
 
-  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ(weather)】" . $location);
+  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ１】" . $location);
 
   $crawler = $client->request('GET', 'http://www.data.jma.go.jp/developer/xml/feed/regular.xml');
 
@@ -11,7 +11,7 @@ function weather($bot, $event, $location) {
       $retvalue = $retvalue.$element->text()."\n";
   });
 
-  replyTextMessage($bot, $event->getReplyToken(), $retvalue);
+  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ２】" . $retvalue);
 
 }
 
