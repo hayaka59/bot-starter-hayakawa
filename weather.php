@@ -5,12 +5,12 @@ function weather($bot, $event, $location) {
 
   $url = 'view-source:https://www.jma.go.jp/jp/yoho/333.html';
   $xml = simpleXML_load_file($url,"SimpleXMLElement",LIBXML_NOCDATA);
-  if($xml ==  FALSE)
+  if($xml === false)
   {
    //deal with error
    replyTextMessage($bot, $event->getReplyToken(), "【simpleXML_load_fileエラー】");
   }
-  else { 
+  else {
     //do stuff
     //pre class
     $sdata = $xml->pre->textframe;
