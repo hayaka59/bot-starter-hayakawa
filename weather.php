@@ -1,9 +1,9 @@
 <?php
 function weather($bot, $event, $location) {
 
-  replyTextMessage($bot, $event->getReplyToken(), "【デバッグ１】" . $location);
+  replyTextMessage($bot, $event->getReplyToken(), "【サービス終了につき新規開発中】" . $location);
 
-  $url = 'view-source:https://www.jma.go.jp/jp/yoho/333.html';
+  $url = 'https://www.jma.go.jp/jp/yoho/333.html';
   $xml = simpleXML_load_file($url,"SimpleXMLElement",LIBXML_NOCDATA);
   if($xml === false)
   {
