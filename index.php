@@ -474,6 +474,16 @@ foreach ($events as $event) {
         );
         break;
 
+      case 'テスト':
+        $stkid = rand(156,159);
+        $sMes1 = '【テスト１★';
+        $sMes2 = 'テスト２】';
+        $sMessage = $sMes1 . $sMes2;
+        replyMultiMessage($bot, $event->getReplyToken(),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sMessage),
+          new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, $stkid)
+        );
+
       default:
         # code...
         break;
