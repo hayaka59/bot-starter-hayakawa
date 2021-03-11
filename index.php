@@ -390,6 +390,19 @@ foreach ($events as $event) {
         registerLogdata($event->getUserId(), $gazou);
         break;
 
+        case '京都':
+        case 'チラシ01':
+          $index = rand(1,27);
+          $gazou = '/imgs/' . $index . '.jpg';
+          replyImageMessage($bot,$event->getReplyToken(), 'https://' .
+                            $_SERVER['HTTP_HOST'] .
+                            $gazou,
+                            'https://' . $_SERVER['HTTP_HOST'] .
+                            '/imgs/leaflet01.png');
+          // ログデータとして送信メッセージを保存
+          registerLogdata($event->getUserId(), $gazou);
+          break;
+
       case 'ウルトラ画像':
         $index = rand(1,27);
         $gazou = '/UltraJapan_Sept2016/UltraJapan_Sept2016_' . $index . '.jpg';
