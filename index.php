@@ -393,7 +393,7 @@ foreach ($events as $event) {
         case '京都':
         case 'チラシ01':
           $index = rand(1,27);
-          $gazou = '/imgs/' . $index . '.jpg';
+          $gazou = '/imgs/leaflet01.png';
           replyImageMessage($bot,$event->getReplyToken(), 'https://' .
                             $_SERVER['HTTP_HOST'] .
                             $gazou,
@@ -402,6 +402,19 @@ foreach ($events as $event) {
           // ログデータとして送信メッセージを保存
           registerLogdata($event->getUserId(), $gazou);
           break;
+
+          case '大阪':
+          case 'チラシ02':
+            $index = rand(1,27);
+            $gazou = '/imgs/leaflet02.png';
+            replyImageMessage($bot,$event->getReplyToken(), 'https://' .
+                              $_SERVER['HTTP_HOST'] .
+                              $gazou,
+                              'https://' . $_SERVER['HTTP_HOST'] .
+                              '/imgs/leaflet02.png');
+            // ログデータとして送信メッセージを保存
+            registerLogdata($event->getUserId(), $gazou);
+            break;
 
       case 'ウルトラ画像':
         $index = rand(1,27);
