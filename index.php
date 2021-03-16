@@ -390,7 +390,9 @@ foreach ($events as $event) {
         registerLogdata($event->getUserId(), $gazou);
         break;
 
+
     case '京都':
+    case 'チラシ':
     case 'チラシ１':
         $index = rand(1,27);
         $gazou = '/imgs/leaflet01.png';
