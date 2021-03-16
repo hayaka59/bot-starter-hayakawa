@@ -390,31 +390,31 @@ foreach ($events as $event) {
         registerLogdata($event->getUserId(), $gazou);
         break;
 
-        case '京都':
-        case 'チラシ01':
+    case '京都':
+    case 'チラシ１':
+        $index = rand(1,27);
+        $gazou = '/imgs/leaflet01.png';
+        replyImageMessage($bot,$event->getReplyToken(), 'https://' .
+                          $_SERVER['HTTP_HOST'] .
+                          $gazou,
+                          'https://' . $_SERVER['HTTP_HOST'] .
+                          '/imgs/leaflet01.png');
+        // ログデータとして送信メッセージを保存
+        registerLogdata($event->getUserId(), $gazou);
+        break;
+
+      case '大阪':
+      case 'チラシ２':
           $index = rand(1,27);
-          $gazou = '/imgs/leaflet01.png';
+          $gazou = '/imgs/leaflet02.png';
           replyImageMessage($bot,$event->getReplyToken(), 'https://' .
                             $_SERVER['HTTP_HOST'] .
                             $gazou,
                             'https://' . $_SERVER['HTTP_HOST'] .
-                            '/imgs/leaflet01.png');
+                            '/imgs/leaflet02.png');
           // ログデータとして送信メッセージを保存
           registerLogdata($event->getUserId(), $gazou);
           break;
-
-          case '大阪':
-          case 'チラシ02':
-            $index = rand(1,27);
-            $gazou = '/imgs/leaflet02.png';
-            replyImageMessage($bot,$event->getReplyToken(), 'https://' .
-                              $_SERVER['HTTP_HOST'] .
-                              $gazou,
-                              'https://' . $_SERVER['HTTP_HOST'] .
-                              '/imgs/leaflet02.png');
-            // ログデータとして送信メッセージを保存
-            registerLogdata($event->getUserId(), $gazou);
-            break;
 
       case 'ウルトラ画像':
         $index = rand(1,27);
