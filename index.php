@@ -394,6 +394,7 @@ foreach ($events as $event) {
     case '京都':
     case 'チラシ':
     case 'チラシ１':
+    case 'チラシ01':
         $index = rand(1,27);
         $gazou = '/imgs/leaflet01.png';
         replyImageMessage($bot,$event->getReplyToken(), 'https://' .
@@ -407,6 +408,7 @@ foreach ($events as $event) {
 
       case '大阪':
       case 'チラシ２':
+      case 'チラシ02':
           $index = rand(1,27);
           $gazou = '/imgs/leaflet02.png';
           replyImageMessage($bot,$event->getReplyToken(), 'https://' .
